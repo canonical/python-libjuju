@@ -163,6 +163,12 @@ class Controller:
     def controller_name(self):
         return self._connector.controller_name
 
+    @property
+    def controller_endpoint(self):
+        if not self._connector._connection:
+            return None
+        return self._connector._connection.endpoint
+
     async def disconnect(self):
         """Shut down the watcher task and close websockets.
 
